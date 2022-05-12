@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% include 'header.html' %}
+
+
+
+{% block title %} Home {% endblock %}
+
+
+
+{% block body %}
+
+<div class="container">
+   <div class="row">
+      <div class="col md-12">
+
+         <div class="jumbotron p-3">
+
+            <h2>Empresas <b> </b>
+
+
+               <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#mymodal">
+                  Agregar
+               </button>
+
+            </h2>
+
+
+            {% with messages = get_flashed_messages() %}
+
+            {% if messages %}
+
+            {% for message in messages %}
+
+            <div class="alert alert-success alert-dismissable" role="alert">
+
+               <button type="button" class="close" data-dismiss="alert" aria-label="close">
+
+                  <span aria-hidden="true">x</span>
+
+               </button>
+
+
+               {{message}}
+
+
+            </div>
+
+
+            {% endfor %}
+
+            {% endif %}
+            {% endwith %}
+
+
+            <table class="table table-hover">
+               <thead class="thead-dark">
+                  <tr>
+                     <th>Nº</th>
+                     <th>Ruc</th>
+                     <th>Nombre</th>
+                     <th>Acción</th>
+                  </tr>
+
+               </thead>
+
+
+               {% for row in lstEmpresa %}
+               <tr>
+                  <td>{{row.EmpresaId}}</td>
+                  <td>{{row.Ruc}}</td>
+                  <td>{{row.Nombre}}</td>
+
+                  <td>
+                     <!-- <a href="Empresa/update/{{row.EmpresaId}}" class="btn btn-warning btn-xs" data-toggle="modal"
+                        data-target="#modaledit{{row.ProductoId}}">Editar</a>
+                     <a href="/Empresa/delete/{{row.EmpresaId}}" class="btn btn-danger btn-xs"
+                        onclick="return confirm('Are You Sure To Delete ?')">Borrar</a> -->
+
+
+                  </td>
+
+               </tr>
+
+
+             
+
+
+               {% endfor %}
+
+
+            </table>
+
+
+         </div>
+
+
+
+     
+
+      </div>
+
+   </div>
+
+</div>
+
+
+{% endblock %}
